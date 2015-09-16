@@ -1,3 +1,4 @@
 angular.module('airwaysApp', [
-'airwaysApp.controller'
+'airwaysApp.controller',
+'airwaysApp.services'
 ]);
