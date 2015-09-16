@@ -56,14 +56,14 @@
             <!-- Top Menu Items -->
             <ul class="nav navbar-right top-nav">
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-user"></i> Check-In</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#checkInModal"><i class="fa fa-user"></i> Check-In</a>
                 </li>
                 <li class="dropdown">
-                    <a href="#" class="dropdown-toggle" data-toggle="dropdown"><i class="fa fa-gear"></i> Change Flight</a>
+                    <a href="#" class="dropdown-toggle" data-toggle="modal" data-target="#changeFlightModal"><i class="fa fa-gear"></i> Change Flight</a>
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div ng-controller="SearchFormController" class="collapse navbar-collapse navbar-ex1-collapse">
+            <div ng-controller="FormController" class="collapse navbar-collapse navbar-ex1-collapse">
                 <form novalidate>
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
@@ -72,21 +72,21 @@
                         <li>
                             <a class="fa">From: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="user.From" type="text" class="form-control">
+                                    <input type="text" class="form-control" ng-model="passenger.From">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa">To: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="user.To" type="text" class="form-control">
+                                    <input type="text" class="form-control" ng-model="passenger.To" >
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa fa-table"> Depart Date: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="user.Depart" type="text" class="form-control">
+                                    <input type="text" class="form-control" ng-model="passenger.Depart" placeholder="MM/DD/YYYY">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
@@ -118,13 +118,239 @@
                                 <h3 class="panel-title">Flight #</h3>
                             </div>
                             <div class="panel-body">
-                                <pre>user = {{user | json}}</pre>
-                                <pre>master = {{master | json}}</pre>
+                                <div class="col-lg-10">
+                                    <pre>From = {{passenger.From}} </pre>
+                                    <pre>To = {{passenger.To}}</pre>
+                                    <pre>Depart = {{passenger.Depart}}</pre>
+                                </div>
+                                <div class="col-lg-2">
+                                    <button class="btn btn-large btn-block btn-primary" type="button" data-toggle="modal" data-target="#paymentModal">Select Flight</button>
+                                </div>
                             </div>
                         </div> 
                     </div>
                 </div>
                 <!-- /.row -->
+
+                <!-- Payment Modal -->
+                <div id="paymentModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+
+                        <div class="modal-header">
+                            <button type="button" class="close" data-dismiss="modal">&times;</button>
+                            <h4 class="modal-title">Passenger Information:</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form role="form">
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Name" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="email" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="Address" name="Address" placeholder="Address" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="Age" name="Age" placeholder="Age" required>
+                                </div>
+                                <div class="form-group">
+                                    <input type="text" class="form-control" id="Cell" name="Cell" placeholder="(XXX)-XXX-XXXX" required>
+                                </div>
+                            </form>
+                        </div>
+
+
+                        <div class="modal-header">
+                            <h4 class="modal-title">Payment:</h4>
+                        </div>
+
+                        <div class="modal-body">
+                            <form class="form-horizontal" role="form">
+                                <fieldset>
+                                  <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-holder-name">Name on Card</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" name="card-holder-name" id="card-holder-name" placeholder="Card Holder's Name">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="card-number">Card Number</label>
+                                    <div class="col-sm-9">
+                                      <input type="text" class="form-control" name="card-number" id="card-number" placeholder="Debit/Credit Card Number">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="expiry-month">Expiration Date</label>
+                                    <div class="col-sm-9">
+                                      <div class="row">
+                                        <div class="col-xs-3">
+                                          <select class="form-control col-sm-2" name="expiry-month" id="expiry-month">
+                                            <option>Month</option>
+                                            <option value="01">Jan (01)</option>
+                                            <option value="02">Feb (02)</option>
+                                            <option value="03">Mar (03)</option>
+                                            <option value="04">Apr (04)</option>
+                                            <option value="05">May (05)</option>
+                                            <option value="06">June (06)</option>
+                                            <option value="07">July (07)</option>
+                                            <option value="08">Aug (08)</option>
+                                            <option value="09">Sep (09)</option>
+                                            <option value="10">Oct (10)</option>
+                                            <option value="11">Nov (11)</option>
+                                            <option value="12">Dec (12)</option>
+                                          </select>
+                                        </div>
+                                        <div class="col-xs-3">
+                                          <select class="form-control" name="expiry-year">
+                                            <option value="15">2015</option>
+                                            <option value="16">2016</option>
+                                            <option value="17">2017</option>
+                                            <option value="18">2018</option>
+                                            <option value="19">2019</option>
+                                            <option value="20">2020</option>
+                                            <option value="21">2021</option>
+                                            <option value="22">2022</option>
+                                            <option value="23">2023</option>
+                                          </select>
+                                        </div>
+                                      </div>
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <label class="col-sm-3 control-label" for="cvv">Card CVV</label>
+                                    <div class="col-sm-3">
+                                      <input type="text" class="form-control" name="cvv" id="cvv" placeholder="Security Code">
+                                    </div>
+                                  </div>
+                                  <div class="form-group">
+                                    <div class="col-sm-offset-3 col-sm-9">
+                                      <button type="button" class="btn btn-success" data-toggle="modal" data-target="#checkIn2Modal">Pay Now</button>
+                                    </div>
+                                  </div>
+                                </fieldset>
+                            </form>
+                        </div>
+                    </div>
+                  </div>
+                </div>
+
+
+                <!-- Check-In Modal -->
+                <div id="checkInModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Flight Check-In</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Flight Conformation Number:</label>
+                                <input class="form-control">
+                            </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#checkIn2Modal">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Check-In 2 Modal -->
+                <div id="checkIn2Modal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Flight Information</h4>
+                      </div>
+
+                      <br>
+                        <div class="modal-body">
+                            <ul class="list-group">
+                              <li class="list-group-item"><strong>Departure: </strong>9:40AM SAT</li>
+                              <li class="list-group-item"><strong>Arrival: </strong>12:30PM LAX</li>
+                            </ul>
+                            <ul class="list-group">
+                              <li class="list-group-item">First + Last Name</li>
+                              <li class="list-group-item">1234 USAA Blvd. San, Antonio 78240</li>
+                            </ul>
+                            <ul class="list-group">
+                              <li class="list-group-item"><strong>Payment: </strong>**** **** **** 1234</li>
+                            </ul>
+                        </div>
+
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-success">Confirm</button>
+                        </div>
+                    </div>
+
+                  </div>
+                </div>
+
+                <!-- Change Flight Modal -->
+                <div id="changeFlightModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Change Flight Information:</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Flight Conformation Number:</label>
+                                <input class="form-control">
+                            </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#changeFlightModal2">Submit</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <!-- Change Flight Modal 2 -->
+                <div id="changeFlightModal" class="modal fade" role="dialog">
+                  <div class="modal-dialog">
+
+                    <!-- Modal content-->
+                    <div class="modal-content">
+                      <div class="modal-header">
+                        <button type="button" class="close" data-dismiss="modal">&times;</button>
+                        <h4 class="modal-title">Change Flight Information:</h4>
+                      </div>
+
+                      <div class="modal-body">
+                        <form role="form">
+                            <div class="form-group">
+                                <label>Flight Conformation Number:</label>
+                                <input class="form-control">
+                            </div>
+                        </form>
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-primary">Submit Changes</button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
 
             </div>
             <!-- /.container-fluid -->
