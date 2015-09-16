@@ -1,19 +1,13 @@
   angular.module('airwaysApp', [])
-    .controller('SearchFormController', ['$scope', function($scope, API) {
-      $scope.flightList = [
-    {
-      Flight: {
-        price: '$300.00',
-        departure: '6:00 am',
-        arrival: '3:00 pm',
-        origin: 'SAT',
-        destination: 'NYC',
-        duration: '8 hours',
-        number of seats available: '16',
-      }
-    }]);
+    .controller('SearchFormController', ['$scope', function($scope, raspberryAPIservice) {
+      $scope.flightList = [];
+      
+      raspberryAPIservice.getFlights().success(function (response) {
+        $scope.flightList = response.//MRData.StandingsTable.StandingsList[0].DriverStandings;
+      });
+    });
 
-
+// the code above was essentially copied from the tutorial I am using with racecar data
 
   // $scope.update = function(user) {
   //       $scope.master = angular.copy(user);
