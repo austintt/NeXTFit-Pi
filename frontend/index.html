@@ -74,21 +74,24 @@
                         <li>
                             <a class="fa">From: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="userFrom" type="text" class="form-control">
+                                    <input ng-model="userFrom" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userFrom">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa">To: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="userTo" type="text" class="form-control">
+                                    <input ng-model="userTo" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userTo">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa fa-table"> Depart Date: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="userDepart" type="text" class="form-control">
+                                    <input ng-model="userDepart" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userDepart">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
