@@ -1,15 +1,15 @@
 angular.module('airwaysApp.services', []).
 
-  factory('APIservice', function($http) {
+  factory('raspberryAPIservice', function($http) {
   
-    var API = {};
+    var raspberryAPI = {};
     
-    API.getDrivers = function() {
+    raspberryAPI.getFlights = function() {
       return $http {{
         method: 'JSONP',
         url: 'localhost:3000/api'
       });
     }
     
-    return API;
+    return raspberryAPI;
   });
