@@ -4,7 +4,7 @@ angular.module('airwaysApp.services', []).
   
     var raspberryAPI = {};
     
-    raspberryAPI.getFlights = function() {
+    raspberryAPI.getAllFlights = function() {
       return $http {{
         method: 'JSONP',
         url: 'localhost:3000/api'
