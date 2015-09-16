@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html lang="en" ng-app>
+<head>
+  <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="">
+    <meta name="author" content="Austin Tooley, Brian Armstrong, Kenneth Heyen">
+  <title>dbPiandistic</title>
+
+  <!--stylesheets-->
+  <link href="bootstrap/css/bootstrap.css" rel="stylesheet" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheet.css" />
+  
+  <!--JS-->
+  <script src="https://code.jquery.com/jquery-1.10.2.min.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.2.4/angular.min.js"></script>
+  <script type="text/javascript" src="front.js"></script>
+
+
+    
+</head>
+  <body ng-controller="dbController">
+    <div class="container">
+      <!-- Static navbar -->
+      <div class="navbar navbar-default" role="navigation">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="index.html">dbPianistic</a>
+        </div>
+        <div class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li ><a href="index.html">Current Tasks</a></li>
+            <li ><a href="pianos.html">Pianos</a></li>
+            <li ><a href="locations.html">Locations</a></li>
+          </ul>
+          <ul class="nav navbar-nav navbar-right">
+            <li class="active"><a href="addPiano.html">Add Piano</a></li>
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+
+      </div> <!-- /container -->
+    <div class="container">
+      <h1 class="numPianos">  {{numPianos}} pianos </h1>
+      <hr>
+    <!--  <div class="col-lg-12">
+            <div class="form-group searchbox">
+              <label>Piano ID: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Type: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Make: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Model: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Year: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Condition: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Building: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Room #: </label>
+                <input class="form-control search" placeholder="123456">
+              <label>Serial: </label>
+                <input class="form-control search" placeholder="123456">
+            </div>
+            <button style="text-align:right" type="submit" class="btn btn-default">Submit</button>
+      </div>
+    -->
+
+    <div class="col-lg-12">
+            <h2>Add New Piano</span></h2>
+            <div class="col-lg-12">
+            <form id="submitPiano" name="submitPiano" action="http://localhost:8080/DBPianistic2/DBServlet" method="post">
+              <div class="searchBox">
+                <div class="search">
+                  <input type="hidden" name="cmd" value="add">
+                  <label>BYUI-ID: </label>
+                  <input type="text" name="id" placeholder="11271989">
+                </div>
+                <div class="search">
+                  <label>Type: </label>
+                  <input type="text" name="type" placeholder="Grand">
+                </div>
+                <div class="search">
+                  <label>Make: </label>
+                  <input type="text" name="make" placeholder="Yamaha">
+                </div>
+                <div class="search">
+                  <label>Model: </label>
+                  <input type="text" name="model" placeholder="BSG-001">
+                </div>
+                <div class="search">
+                  <label>Serial #: </label>
+                  <input type="text" name="serial" placeholder="24609">
+                </div>
+              </div>
+
+                <br>
+              <div class="searchBox">
+                <div class="search">
+                  <label>Year: </label>
+                  <input type="text" name="year"  maxlength="4" placeholder="2042">
+                </div>
+                <div class="search">
+                  <label>Building: </label>
+                  <input type="text" name="building" placeholder="Austin">
+                </div>
+                <div class="search">
+                  <label>Room #: </label>
+                  <input type="text" name="room" placeholder="210">
+                </div>
+                <div class="search">
+                  <label>Cost $: </label>
+                  <input type="text" name="cost" placeholder="7000">
+                </div>
+              </div>
+              <br>
+                <div class="searchBox">
+                  <div class="search">
+                    <label>Room Type: </label>
+                    <div class="controls">
+                      <select id="condition" name="roomType" class="input-large">
+                        <option value="Class Room">Class Room</option>
+                        <option value="Office">Office</option>
+                        <option value="Lounge"> Lounge</option>
+                        <option value="Practice Room">Practice Room</option>
+                        <option value="Concert Room">Concert Room</option>
+                        <option value="Rehersal Hall"> Rehersal Hall</option>
+                        <option value="Other"> Other</option>
+                      </select>
+                    </div>
+                  </div>
+
+                  <div class="search">
+                    <label>Condition: </label>
+                    <div class="controls">
+                      <select id="condition" name="condition" class="input-large">
+                        <option value="Poor">Poor</option>
+                        <option value="Fair">Fair</option>
+                        <option value="Good">Good</option>
+                        <option value="Excellent">Excellent</option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <br> <br>
+                <button style="text-align:right" type="submit" class="btn btn-default">Submit</button>
+              </div>
+            </form>
+            </div>
+          </div>
+        </div>
+
+        <script type="text/javascript">
+          var frm = $('#submitPiano');
+          frm.submit(function (ev) {
+              ev.preventDefault();
+              $.ajax({
+                  type: frm.attr('method'),
+                  url: frm.attr('action'),
+                  data: frm.serialize(),
+                  success: function (data) {
+                      console.log(data);
+                      window.location.reload();
+              }
+          });
+
+          
+          });
+        </script>
+      <!--
+        <div class="col-lg-12 searchBox">              
+          <div class="search">ID: <input ng-model="search.byui_piano_id"></div>
+          <div class="search">Type: <input ng-model="search.type_text"></div>
+          <div class="search">Make: <input ng-model="search.make_name"></div>
+          <div class="search">Model: <input ng-model="search.model_name"></div>
+          <div class="search">Year: <input ng-model="search.year"></div>
+          <div class="search">Age: <input ng-model="search.age"></div>
+          <div class="search">Condition: <input ng-model="search.condition_text"></div>
+          <div class="search">Serial: <input ng-model="search.mfg_serial"></div>
+        </div>
+
+
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="bootstrap/js/bootstrap.min.js"></script>
+
+</body>
+</html>
