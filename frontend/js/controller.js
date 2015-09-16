@@ -1,5 +1,5 @@
   angular.module('airwaysApp', [])
-    .controller('SearchFormController', ['$scope', function($scope, raspberryAPIservice) {
+    .controller('SearchFormController', function($scope, $http) {
       // our three search fields are binded to the userTo, userFrom, and userDepart variables so their values
       // are always kept up to date with the input values
       $scope.userTo = null;
@@ -7,20 +7,13 @@
       $scope.userDepart = null;
       
       $scope.flightList = [];
-      
-      raspberryAPIservice.getFlights().success(function (response) {
-        $scope.flightList = response.//MRData.StandingsTable.StandingsList[0].DriverStandings;
-      });
-    });
+   
+      if($scope.userTo == undefined) {
+        $scope.userTo = 'New York City';
+        fetch();
+      }
 
-// the code above was essentially copied from the tutorial I am using with racecar data
-
-  // $scope.update = function(user) {
-  //       $scope.master = angular.copy(user);
-  //     };
-
-  //     $scope.reset = function() {
-  //       $scope.user = angular.copy($scope.master);
-  //     };
-
-      // $scope.reset();
+      function fetch() {
+        $http.get("localhost:3000/api" + $scope.userTo)
+        .success(function(response){$scope.details = response;});
+      }
