@@ -25,7 +25,9 @@
 
     <!-- Angular JS -->
     <script src= "framworks/angular.min.js"></script>
-    <script src= "js/angular.js"></script>
+    <script src= "js/controller.js"></script>
+    <script src ="js/app.js"></script>
+    <script src ="js/services.js"></script>
 
 
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
@@ -72,21 +74,36 @@
                         <li>
                             <a class="fa">From: </a>
                             <div class="form-group input-group">
+<<<<<<< HEAD
                                     <input type="text" class="form-control" ng-model="passenger.From">
+=======
+                                    <input ng-model="userFrom" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userFrom">
+>>>>>>> origin/master
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa">To: </a>
                             <div class="form-group input-group">
+<<<<<<< HEAD
                                     <input type="text" class="form-control" ng-model="passenger.To" >
+=======
+                                    <input ng-model="userTo" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userTo">
+>>>>>>> origin/master
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa fa-table"> Depart Date: </a>
                             <div class="form-group input-group">
+<<<<<<< HEAD
                                     <input type="text" class="form-control" ng-model="passenger.Depart" placeholder="MM/DD/YYYY">
+=======
+                                    <input ng-model="userDepart" type="text" class="form-control"
+                                    ng-repeat="flight in flightList | filter: userDepart">
+>>>>>>> origin/master
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
