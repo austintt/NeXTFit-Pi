@@ -1,5 +1,5 @@
   angular.module('airwaysApp', [])
-    .controller('SearchFormController', ['$scope', function($scope) {
+    .controller('SearchFormController', ['$scope', function($scope, API) {
       $scope.master = {};
 
       $scope.update = function(user) {
