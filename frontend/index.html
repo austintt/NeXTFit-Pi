@@ -21,6 +21,10 @@
     <!-- Custom styles for this template -->
     <link href="style/customStyle.css" rel="stylesheet">
 
+    <!-- AngularJS -->
+    <script src="framworks/angular.min.js"></script>
+    <script src="js/angular.js"></script>
+
     <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!--[if lt IE 9]>
       <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
@@ -28,12 +32,12 @@
     <![endif]-->
   </head>
 
-  <body>
+  <body ng-app="ewokApp">
 
     <div class="navbar navbar-default navbar-fixed-top">
       <div class="container">
         <div class="navbar-header">
-          <a href="../" class="navbar-brand">Ewok</a>
+          <a href="index.html" class="navbar-brand">Ewok</a>
           <button class="navbar-toggle" type="button" data-toggle="collapse" data-target="#navbar-main">
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
@@ -100,10 +104,29 @@
     <div class="container">
 
       <div class="starter-template">
-        <h1>Team Ewoks!</h1>
-        <p class="lead">We will win!</p>
+        <h1><strong>Yub Nub Grub Eating Competion</strong></h1> 
+        <br>
+        <h3 class="text-left">Show your true Ewokian appetite, compete against the best.</h3>
+        <br>
+        <p class="lead text-left"><strong>Competiton Rules: </strong>Winner eats the most pounds of Grub in an hour!</p>
       </div>
 
+      <div class ="text-left" ng-controller="SignUpController">
+        <p class="lead text-center text-uppercase"><strong>Sign Up</strong></p>
+        <form novalidate class="css-form">
+          Name: <input type="text" ng-model="user.name" required /><br><br>
+          E-mail: <input type="email" ng-model="user.email" required /><br><br>
+          Gender: <input type="radio" ng-model="user.gender" value="male" />Male
+          <input type="radio" ng-model="user.gender" value="female" />Female<br><br>
+          <input type="button" ng-click="reset()" value="Reset" />
+          <strong><input type="submit" ng-click="update(user)" value="Save" /></strong>
+        </form>
+
+        <br>
+
+        <pre>user = {{user | json}}</pre>
+        <pre>master = {{master | json}}</pre>
+      </div>
     </div><!-- /.container -->
 
 
@@ -112,5 +135,6 @@
     <!-- Placed at the end of the document so the pages load faster -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script>
     <script src="bootstrap/js/bootstrap.min.js"></script>
+
   </body>
 </html>
