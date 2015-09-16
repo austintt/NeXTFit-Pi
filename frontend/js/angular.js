@@ -1,14 +1,10 @@
-angular.module('ewokApp', [])
-    .controller('SignUpController', ['$scope', function($scope) {
-      $scope.master = {};
+var app = angular.module('airwaysApp', []);
 
-      $scope.update = function(user) {
-        $scope.master = angular.copy(user);
-      };
-
-      $scope.reset = function() {
-        $scope.user = angular.copy($scope.master);
-      };
-
-      $scope.reset();
-    }]);
+app.controller('searchForm', function($scope) 
+{
+    $scope.master = {From:"Dan", To:"", Depart:""};
+    $scope.submit = function() {
+        $scope.passenger = angular.copy($scope.master);
+    };
+    $scope.submit();
+});
