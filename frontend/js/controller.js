@@ -1,5 +1,8 @@
   angular.module('airwaysApp', [])
     .controller('SearchFormController', ['$scope', function($scope, raspberryAPIservice) {
+      $scope.user.To = null;
+      $scope.user.From = null;
+      $scope.user.Depart = null;
       $scope.flightList = [];
       
       raspberryAPIservice.getFlights().success(function (response) {
