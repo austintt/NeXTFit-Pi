@@ -1,0 +1,22 @@
+{
+  "name": "NeXTFit-Pi",
+  "version": "0.0.0",
+  "description": "",
+  "main": "myApi.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/austintt/NeXTFit-Pi.git"
+  },
+  "author": "Ausitn",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/austintt/NeXTFit-Pi/issues"
+  },
+  "homepage": "https://github.com/austintt/NeXTFit-Pi",
+  "dependencies": {
+    "express": "^4.13.3"
+  }
+}
