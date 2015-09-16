@@ -1,8 +1,11 @@
   angular.module('airwaysApp', [])
     .controller('SearchFormController', ['$scope', function($scope, raspberryAPIservice) {
-      $scope.user.To = null;
-      $scope.user.From = null;
-      $scope.user.Depart = null;
+      // our three search fields are binded to the userTo, userFrom, and userDepart variables so their values
+      // are always kept up to date with the input values
+      $scope.userTo = null;
+      $scope.userFrom = null;
+      $scope.userDepart = null;
+      
       $scope.flightList = [];
       
       raspberryAPIservice.getFlights().success(function (response) {
