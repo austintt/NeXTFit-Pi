@@ -11,4 +11,28 @@
       raspberryAPIservice.getAllFlights().success(function (response) {
         $scope.flightList = response;
       });
+      
+      raspberryAPIservice.getFlightDetails().success(function (response) {
+        $scope.flightList = response;
+      });
+      
+      raspberryAPIservice.getOrderDetails().success(function (response) {
+        $scope.flightList = response;
+      });
+      
+      raspberryAPIservice.setCheckIn().success(function (response) {
+        $scope.flightList = response;
+      });
+      
+      raspberryAPIservice.setPaymentInfo().success(function (response) {
+        $scope.flightList = response;
+      });
+      
+    raspberryAPIservice.setOrderDetails().success(function (response) {
+      $scope.flightList = response;
     });
+    
+    raspberryAPIservice.updateOrderDetails().success(function (response) {
+      $scope.flightList = response;
+    });
+  });
