@@ -63,7 +63,7 @@
                 </li>
             </ul>
             <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-            <div ng-controller="searchForm" class="collapse navbar-collapse navbar-ex1-collapse">
+            <div ng-controller="SearchFormController" class="collapse navbar-collapse navbar-ex1-collapse">
                 <form novalidate>
                     <ul class="nav navbar-nav side-nav">
                         <li class="active">
@@ -72,26 +72,26 @@
                         <li>
                             <a class="fa">From: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="passenger.From" type="text" class="form-control">
+                                    <input ng-model="user.From" type="text" class="form-control">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa">To: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="passenger.To" type="text" class="form-control">
+                                    <input ng-model="user.To" type="text" class="form-control">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
                             <a class="fa fa-table"> Depart Date: </a>
                             <div class="form-group input-group">
-                                    <input ng-model="passenger.Depart" type="text" class="form-control">
+                                    <input ng-model="user.Depart" type="text" class="form-control">
                                     <span class="input-group-btn"><button class="btn btn-default" type="button"><i class="fa fa-search"></i></button></span>
                             </div>
                         </li>
                         <li>
-                            <a class="fa fa-fw"><button ng-click="submit()" type="button" class="btn btn-primary">Submit</button></a>
+                            <a class="fa fa-fw"><button ng-click="reset()" type="button" class="btn btn-primary">Submit</button></a>
                         </li>
                     </ul>
                 </form>
@@ -118,8 +118,8 @@
                                 <h3 class="panel-title">Flight #</h3>
                             </div>
                             <div class="panel-body">
-                                <p>form = {{user }}</p>
-                                <p>master = {{master}}</p>
+                                <pre>user = {{user | json}}</pre>
+                                <pre>master = {{master | json}}</pre>
                             </div>
                         </div> 
                     </div>

@@ -1,10 +1,14 @@
-var app = angular.module('airwaysApp', []);
+  angular.module('airwaysApp', [])
+    .controller('SearchFormController', ['$scope', function($scope) {
+      $scope.master = {};
 
-app.controller('searchForm', function($scope) 
-{
-    $scope.master = {From:"Dan", To:"", Depart:""};
-    $scope.submit = function() {
-        $scope.passenger = angular.copy($scope.master);
-    };
-    $scope.submit();
-});
+      $scope.update = function(user) {
+        $scope.master = angular.copy(user);
+      };
+
+      $scope.reset = function() {
+        $scope.user = angular.copy($scope.master);
+      };
+
+      $scope.reset();
+    }]);
